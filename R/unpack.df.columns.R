@@ -94,7 +94,7 @@ unpack.df.columns <- function (df, all_as_character = FALSE)
     gsub("^_","",.) # underscore as first char
   
   
-  if(all_as_character = TRUE){
+  if(all_as_character == TRUE){
     df <- df %>%
       mutate_all(as.character)
   }
