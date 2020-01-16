@@ -15,7 +15,7 @@
 # function for unpacking dataframes where columns also contain dataframes. It returns a dataframe with atomic columns
 
 ############
-unpack.df.columns <- function (df) 
+unpack.df.columns <- function (df, all_as_character = FALSE) 
 {
   `%notin%` <- Negate(`%in%`)
 # PREP  
@@ -92,6 +92,12 @@ unpack.df.columns <- function (df)
   
   names(df) <- names(df) %>%
     gsub("^_","",.) # underscore as first char
+  
+  
+  if(all_as_character = TRUE){
+    df <- df %>%
+      mutate_all(as.character)
+  }
 
     return(df)
 }
